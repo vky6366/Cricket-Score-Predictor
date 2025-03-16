@@ -5,7 +5,8 @@ import numpy as np
 import xgboost
 from xgboost import XGBRegressor
 
-pipe = pickle.load(open('pipe.pkl','rb'))
+pipe1 = pickle.load(open('t20i.pkl','rb'))
+pipe2 = pickle.load(open('odi.pkl','rb'))
 
 teams = ['Australia','India','Bangladesh','New Zealand','South Africa',
          'England','West Indies','Afghanistan','Pakistan','Sri Lanka']
@@ -18,16 +19,21 @@ cities = ['Colombo','Mirpur','Johannesburg','Dubai','Auckland','Cape Town',
           'Nagpur','Chandigarh','Adelaide','Bangalore','St Kitts',
           'Cardiff','Christchurch','Trinidad']
 
+m_format = ['ODI','T20i']
+
 
 st.title('Score Predictor')
 
-col1, col2 = st.columns(2)
+col1, col2, col3 = st.columns(3)
 
 with col1:
     batting_team = st.selectbox('Select Batting Team:',sorted(teams))
 
 with col2:
     bowling_team = st.selectbox('Select Bowling Team:',sorted(teams))
+
+with col3:
+    sm_format = st.selectbox('Select Format:',sorted(m_format))
 
 city = st.selectbox('Select City: ',sorted(cities))
 
@@ -49,5 +55,8 @@ if st.button('Predict Score'):
 
     input_df = pd.DataFrame(
      {'batting_team': [batting_team], 'bowling_team': [bowling_team],'city':city, 'current_score': [current_score],'balls_left': [balls_left], 'wickets_left': [wickets], 'crr': [crr], 'last_five': [last_five]})
-    result = pipe.predict(input_df)
+    if sm_format == 'T20i':
+        result = pipe1.predict(input_df)
+    elif sm_format == 'ODI':
+        result = pipe2.predict(input_df)
     st.header("Predicted Score - " + str(int(result[0])))
