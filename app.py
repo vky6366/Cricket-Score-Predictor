@@ -9,7 +9,7 @@ pipe1 = pickle.load(open('t20i.pkl','rb'))
 pipe2 = pickle.load(open('odi.pkl','rb'))
 
 teams = ['Australia','India','Bangladesh','New Zealand','South Africa',
-         'England','West Indies','Afghanistan','Pakistan','Sri Lanka']
+         'England','West Indies','Pakistan','Sri Lanka']
 
 cities = ['Colombo','Mirpur','Johannesburg','Dubai','Auckland','Cape Town',
           'London','Pallekele','Barbados','Sydney','Melbourne','Durban',
@@ -49,14 +49,18 @@ with col5:
 last_five = st.number_input('Runs scored in last 5 overs')
 
 if st.button('Predict Score'):
-    balls_left = 120 - (overs*6)
+    
     wickets_left = 10 -wickets
     crr = current_score/overs
 
-    input_df = pd.DataFrame(
-     {'batting_team': [batting_team], 'bowling_team': [bowling_team],'city':city, 'current_score': [current_score],'balls_left': [balls_left], 'wickets_left': [wickets], 'crr': [crr], 'last_five': [last_five]})
     if sm_format == 'T20i':
+        balls_left = 120 - (overs*6)
+        input_df = pd.DataFrame(
+        {'batting_team': [batting_team], 'bowling_team': [bowling_team],'city':city, 'current_score': [current_score],'balls_left': [balls_left], 'wickets_left': [wickets], 'crr': [crr], 'last_five': [last_five]})
         result = pipe1.predict(input_df)
     elif sm_format == 'ODI':
+        balls_left = 300 - (overs*6)
+        input_df = pd.DataFrame(
+        {'batting_team': [batting_team], 'bowling_team': [bowling_team],'city':city, 'current_score': [current_score],'balls_left': [balls_left], 'wickets_left': [wickets], 'crr': [crr], 'last_five': [last_five]})
         result = pipe2.predict(input_df)
     st.header("Predicted Score - " + str(int(result[0])))
