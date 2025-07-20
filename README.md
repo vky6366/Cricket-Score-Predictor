@@ -32,7 +32,9 @@ Kaggle: https://www.kaggle.com/datasets/veeralakrishna/cricsheet-a-retrosheet-fo
    pip install -r requirements.txt
    ```
 3. **Run the application:**
-   Follow the instructions in the main script or Jupyter notebook to input match details and view predictions.
+   ```bash
+   streamlit run app.py
+   ```
 
 ## Usage
 
