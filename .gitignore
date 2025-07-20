@@ -2,3 +2,4 @@ Dataset
 Preprocessing/*.pkl
 pipe.pkl
 *.pkl
+.venv
