@@ -17,6 +17,10 @@ Cricket Score Predictor is a project designed to estimate and forecast cricket s
 - Machine Learning libraries (e.g., scikit-learn, pandas, numpy)
 - Data visualization tools (e.g., matplotlib, seaborn)
 
+## Dataset
+
+Kaggle: https://www.kaggle.com/datasets/veeralakrishna/cricsheet-a-retrosheet-for-cricket
+
 ## Getting Started
 
 1. **Clone the repository:**
