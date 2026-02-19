@@ -8,6 +8,13 @@ from xgboost import XGBRegressor
 pipe1 = pickle.load(open('t20i.pkl','rb'))
 # pipe2 = pickle.load(open('odi.pkl','rb'))
 
+@st.cache_resource
+def load_model():
+    with open("t20i.pkl", "rb") as f:
+        return pickle.load(f)
+
+pipe1 = load_model()
+
 teams = ['Australia','India','Bangladesh','New Zealand','South Africa',
          'England','West Indies','Pakistan','Sri Lanka']
 
