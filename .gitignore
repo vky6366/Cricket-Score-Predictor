@@ -3,3 +3,4 @@ Preprocessing/*.pkl
 pipe.pkl
 *.pkl
 .venv
+AWS/

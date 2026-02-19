@@ -49,7 +49,7 @@ with col5:
 last_five = st.number_input('Runs scored in last 5 overs')
 
 if st.button('Predict Score'):
-    
+    print("Data Recieved!!!! 🔥")
     wickets_left = 10 -wickets
     crr = current_score/overs
 
