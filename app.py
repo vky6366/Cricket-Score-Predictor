@@ -56,7 +56,7 @@ last_five = st.number_input('Runs scored in last 5 overs')
 if st.button('Predict Score'):
     print("Data Recieved!!!! 🔥")
     wickets_left = 10 -wickets
-    crr = current_score/overs
+    crr = current_score/(overs +1)
 
     # if sm_format == 'T20i':
     balls_left = 120 - (overs*6)
